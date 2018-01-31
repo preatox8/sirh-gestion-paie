@@ -79,22 +79,36 @@ public class JeuxDeDonneesTest {
 	public void test_cotisationsNonImposables() {
 		
 		//sans assertj
-		List<Cotisation> cotisationsNonImposables = bulletin1.getRemunerationEmploye().getProfilRemuneration()
+		/*List<Cotisation> cotisationsNonImposables = bulletin1.getRemunerationEmploye().getProfilRemuneration()
 				.getCotisationsNonImposables();
 		Stream.of("EP01", "EP02", "EP03", "EP04", "EP05", "EP06", "EP07", "EP12", "EP19", "EP20", "EPR1", "E900",
 				"EP28", "EP37")
 				.forEach(code -> assertTrue("verification code " + code,
-						cotisationsNonImposables.stream().filter(c -> c.getCode().equals(code)).findAny().isPresent()));
+						cotisationsNonImposables.stream().filter(c -> c.getCode().equals(code)).findAny().isPresent()));*/
+		
+		//avec assertj
+		List<Cotisation> cotisationsNonImposables = bulletin1.getRemunerationEmploye().getProfilRemuneration().getCotisationsNonImposables();
+		Stream.of("EP01", "EP02", "EP03", "EP04", "EP05", "EP06", "EP07", "EP12", "EP19", "EP20", "EPR1", "E900","EP28", "EP37").forEach(code -> assertThat(
+							cotisationsNonImposables.stream()
+			                .filter(c -> c.getCode().equals(code)).findAny().isPresent())
+			                .isTrue());
 	}
 
 	@Test
 	public void test_cotisationImposables() {
 		
 		//sans assertj
-		List<Cotisation> cotisationsImposables = bulletin1.getRemunerationEmploye().getProfilRemuneration()
+		/*List<Cotisation> cotisationsImposables = bulletin1.getRemunerationEmploye().getProfilRemuneration()
 				.getCotisationsImposables();
 		Stream.of("SP01", "SP02").forEach(code -> assertTrue("verification code " + code,
-				cotisationsImposables.stream().filter(c -> c.getCode().equals(code)).findAny().isPresent()));
+				cotisationsImposables.stream().filter(c -> c.getCode().equals(code)).findAny().isPresent()));*/
+		
+		//avec assertj
+		List<Cotisation> cotisationsImposables = bulletin1.getRemunerationEmploye().getProfilRemuneration().getCotisationsImposables();
+		Stream.of("SP01", "SP02").forEach(code -> assertThat(
+					cotisationsImposables.stream()
+	                .filter(c -> c.getCode().equals(code)).findAny().isPresent())
+	                .isTrue());
 	}
 
 	@Test
