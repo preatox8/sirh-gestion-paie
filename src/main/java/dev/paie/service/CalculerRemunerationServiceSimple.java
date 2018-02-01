@@ -17,8 +17,6 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 	@Autowired
 	private PaieUtils paieUtils;
 	
-
-	
 	@Override
 	public ResultatCalculRemuneration calculer(BulletinSalaire bulletin) {
 		ResultatCalculRemuneration result = new ResultatCalculRemuneration();

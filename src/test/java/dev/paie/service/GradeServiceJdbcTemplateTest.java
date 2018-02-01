@@ -44,7 +44,7 @@ public class GradeServiceJdbcTemplateTest {
 		
 		// TODO vérifier que les modifications sont bien prises en compte via la méthode lister
 		List<Grade> gradeListmodif = gradeService.lister();
-		assertThat(gradeList.get(gradeList.size()-1).getCode(), equalTo("testmodificationcode"));
+		assertThat(gradeListmodif.get(gradeList.size()-1).getCode(), equalTo("testmodificationcode"));
 		
 	}
 }
