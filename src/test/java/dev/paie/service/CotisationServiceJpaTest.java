@@ -37,6 +37,9 @@ public class CotisationServiceJpaTest {
 		
 		// TODO modifier une cotisation
 		cotisation.setCode("testmodificationcode");
+		cotisation.setLibelle("testmodificationlibelle");
+		cotisation.setTauxPatronal(new BigDecimal("6.66"));
+		cotisation.setTauxSalarial(new BigDecimal("7.77"));
 		cotisationService.mettreAJour(cotisation);
 		List<Cotisation> listModif = cotisationService.lister();
 		assertThat(listModif.get(listModif.size()-1).getCode(), equalTo("testmodificationcode"));
