@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import static org.assertj.core.api.Assertions.*;
+
 
 public class PaieUtilsTest {
 	private PaieUtils paieUtils;

@@ -9,6 +9,7 @@ public class Grade {
 	private BigDecimal nbHeuresBase;
 	private BigDecimal tauxBase;
 	
+
 	public String getCode() {
 		return code;
 	}
@@ -32,6 +33,17 @@ public class Grade {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public Grade(String code, BigDecimal nbHeuresBase, BigDecimal tauxBase) {
+		super();
+		this.code = code;
+		this.nbHeuresBase = nbHeuresBase;
+		this.tauxBase = tauxBase;
+	}
+	public Grade() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	
