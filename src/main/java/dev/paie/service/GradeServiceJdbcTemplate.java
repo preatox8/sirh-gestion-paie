@@ -26,20 +26,17 @@ public class GradeServiceJdbcTemplate implements GradeService {
 	}
 
 	public void sauvegarder(Grade nouveauGrade) {
-		// TODO Auto-generated method stub
 		String sqlInsert = "INSERT INTO grade (CODE,NBHEURESBASE, TAUXBASE) VALUES(?,?,?)";
 		jdbcTemplate.update(sqlInsert, nouveauGrade.getCode(), nouveauGrade.getNbHeuresBase(),
 				nouveauGrade.getTauxBase());
 	}
 
 	public void mettreAJour(Grade grade) {
-		// TODO Auto-generated method stub
 		String sqlUpdate = "UPDATE grade SET CODE = ? , NBHEURESBASE = ? , TAUXBASE = ? WHERE ID = ?";
 		jdbcTemplate.update(sqlUpdate, grade.getCode(), grade.getNbHeuresBase(), grade.getTauxBase(), grade.getId());
 	}
 
 	public List<Grade> lister() {
-		// TODO Auto-generated method stub
 		String vSQL = "SELECT * FROM grade";
 		List<Grade> listeGrade = jdbcTemplate.query(vSQL, new GradeMapper());
 		return listeGrade;

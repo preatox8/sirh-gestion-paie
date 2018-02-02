@@ -33,13 +33,13 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 		BigDecimal totalRetenuSalariale = bulletin.getRemunerationEmploye().getProfilRemuneration().getCotisationsNonImposables().stream()
                 .filter(c -> c.getTauxSalarial()!=null)
                 .map(c -> c.getTauxSalarial().multiply(new BigDecimal(result.getSalaireBrut())))
-                .reduce((a,b) -> a.add(b)).get();
+                .reduce((a,b) -> a.add(b)).orElse(new BigDecimal("0"));
 		
 		//TOTAL_COTISATIONS_PATRONALES = SOMME(COTISATION_NON_IMPOSABLE.TAUX_PATRONAL*SALAIRE_BRUT)
 		BigDecimal totalCotisationsPatronales = bulletin.getRemunerationEmploye().getProfilRemuneration().getCotisationsNonImposables().stream()
 				.filter(c ->c.getTauxPatronal()!=null)
 				.map(c -> c.getTauxPatronal().multiply(new BigDecimal(result. getSalaireBrut())))
-				.reduce((a, b) -> a.add(b)).orElse(new BigDecimal("0"));
+				.reduce((a, b) -> a.add(b)).get();
 		
 		//NET_IMPOSABLE = SALAIRE_BRUT - TOTAL_RETENUE_SALARIALE
 		BigDecimal netImposable = salaireBrut.subtract(totalRetenuSalariale);
