@@ -11,10 +11,21 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 @Configuration
 public class DataSourceMySQLConfig {
 	
-	@Bean
+	/*@Bean
 	public DataSource datasource() {
 	return new EmbeddedDatabaseBuilder()
 	.setType(EmbeddedDatabaseType.H2)
 	.build();
+	}*/
+	
+	@Bean
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/sirthpaie");
+		dataSource.setUsername("root");
+		dataSource.setPassword("");
+		return dataSource;
 	}
+
 }

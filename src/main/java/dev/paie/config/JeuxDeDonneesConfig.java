@@ -5,6 +5,6 @@ import org.springframework.context.annotation.ImportResource;
 
 @Configuration
 //Import de la configuration XML dans une configuration Java
-@ImportResource("classpath:jdd-config.xml")
+@ImportResource({"classpath:jdd-config.xml", "classpath:entreprises.xml", "classpath:grades.xml", "classpath:profils-remuneration.xml", "classpath:cotisations-imposables.xml", "classpath:cotisations-non-imposables.xml"})
 public class JeuxDeDonneesConfig {
 }
