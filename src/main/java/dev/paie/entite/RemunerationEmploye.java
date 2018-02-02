@@ -1,11 +1,30 @@
 package dev.paie.entite;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class RemunerationEmploye {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String matricule;
+	
+	@ManyToOne
+	@JoinColumn(name = "IDREMUNERATIONEMPLOYE")
 	private Entreprise entreprise;
+	
+	@ManyToOne
+	@JoinColumn(name = "IDREMUNERATIONEMPLOYEPROFILREMU")
 	private ProfilRemuneration profilRemuneration;
+	
+	@ManyToOne
+	@JoinColumn(name = "IDREMUNERATIONEMPLOYEGRADE")
 	private Grade grade;
 	
 	public String getMatricule() {
@@ -38,6 +57,9 @@ public class RemunerationEmploye {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public RemunerationEmploye() {
+		super();
 	}
 	
 	

@@ -49,6 +49,6 @@ public class AvantageRepositoryTest {
 		assertThat(nouveauAvantage.getCode(), equalTo("modifcode"));
 		
 		List<Avantage> findByCode = avantageRepository.findByCode("testajoutcode");
-
+		assertThat(nouveauAvantage.getCode(), equalTo("modifcode"));
 
 }}

@@ -48,5 +48,7 @@ public class CotisationServiceJpaTest {
 		// TODO vérifier que les modifications sont bien prises en compte via la méthode lister
 		List<Cotisation> cotisationListmodif = cotisationService.lister();
 		assertThat(cotisationListmodif.get(cotisationList.size()-1).getCode(), equalTo("testmodificationcode"));
+		
+		
 	}
 }
