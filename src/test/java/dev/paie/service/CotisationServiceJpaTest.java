@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.config.ServicesConfig;
 import dev.paie.entite.Cotisation;
@@ -18,6 +19,7 @@ import dev.paie.entite.Cotisation;
 //TODO compléter la configuration
 @ContextConfiguration(classes = { ServicesConfig.class })
 @RunWith(SpringRunner.class)
+@Transactional
 public class CotisationServiceJpaTest {
 
 	@Autowired
@@ -33,21 +35,20 @@ public class CotisationServiceJpaTest {
 		
 		// TODO vérifier qu'il est possible de récupérer la nouvelle cotisation via la méthode lister
 		List<Cotisation> cotisationList = cotisationService.lister();
-		assertThat(cotisationList.get(0).getCode(), equalTo("testajoutcode"));
+		assertThat(cotisationList.get(cotisationList.size()-1).getCode(), equalTo("testajoutcode"));
 		
 		// TODO modifier une cotisation
 		cotisation.setCode("testmodificationcode");
 		cotisation.setLibelle("testmodificationlibelle");
 		cotisation.setTauxPatronal(new BigDecimal("6.66"));
 		cotisation.setTauxSalarial(new BigDecimal("7.77"));
-		
 		cotisationService.mettreAJour(cotisation);
 		List<Cotisation> listModif = cotisationService.lister();
 		assertThat(listModif.get(listModif.size()-1).getCode(), equalTo("testmodificationcode"));
 		
 		// TODO vérifier que les modifications sont bien prises en compte via la méthode lister
 		List<Cotisation> cotisationListmodif = cotisationService.lister();
-		assertThat(cotisationListmodif.get(cotisationList.size()-1).getCode(), equalTo("testmodificationcode"));
+		assertThat(cotisationListmodif.get(cotisationListmodif.size()-1).getCode(), equalTo("testmodificationcode"));
 		
 		
 	}
