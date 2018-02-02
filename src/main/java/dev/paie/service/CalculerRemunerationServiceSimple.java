@@ -49,7 +49,7 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 				bulletin.getRemunerationEmploye().getProfilRemuneration().getCotisationsImposables().stream()
 	                .filter(c -> c.getTauxSalarial()!=null)
 	                .map(c -> c.getTauxSalarial().multiply(new BigDecimal(result.getSalaireBrut())))
-	                .reduce((a,b) -> a.add(b)).orElse(new BigDecimal("0"));
+	                .reduce((a,b) -> a.add(b)).orElse(new BigDecimal("0")));
 
 		
 		String netImposableString = paieUtils.formaterBigDecimal(netImposable);
