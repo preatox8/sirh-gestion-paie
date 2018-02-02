@@ -29,7 +29,8 @@ public class CotisationServiceJpa implements CotisationService {
 
 	@Override
 	public List<Cotisation> lister() {
-		return (List<Cotisation>) em.createQuery("SELECT c FROM Cotisation c", Cotisation.class).getResultList();
+		List<Cotisation> l = em.createQuery("SELECT c FROM Cotisation c", Cotisation.class).getResultList();
+		return l;
 	}
 
 }
