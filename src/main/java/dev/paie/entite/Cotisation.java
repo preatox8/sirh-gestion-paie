@@ -20,6 +20,16 @@ public class Cotisation {
 	private BigDecimal tauxSalarial;
 	private BigDecimal tauxPatronal;
 	
+	public Cotisation() {
+		super();
+	}
+	public Cotisation(String code, String libelle, BigDecimal tauxSalarial, BigDecimal tauxPatronal) {
+		super();
+		this.code = code;
+		this.libelle = libelle;
+		this.tauxSalarial = tauxSalarial;
+		this.tauxPatronal = tauxPatronal;
+	}
 	
 	public String getCode() {
 		return code;
@@ -52,16 +62,7 @@ public class Cotisation {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Cotisation() {
-		super();
-	}
-	public Cotisation(String code, String libelle, BigDecimal tauxSalarial, BigDecimal tauxPatronal) {
-		super();
-		this.code = code;
-		this.libelle = libelle;
-		this.tauxSalarial = tauxSalarial;
-		this.tauxPatronal = tauxPatronal;
-	}
+	
 	
 	
 	

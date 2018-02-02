@@ -27,6 +27,10 @@ public class RemunerationEmploye {
 	@JoinColumn(name = "IDREMUNERATIONEMPLOYEGRADE")
 	private Grade grade;
 	
+	public RemunerationEmploye() {
+		super();
+	}
+	
 	public String getMatricule() {
 		return matricule;
 	}
@@ -58,9 +62,7 @@ public class RemunerationEmploye {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public RemunerationEmploye() {
-		super();
-	}
+	
 	
 	
 	

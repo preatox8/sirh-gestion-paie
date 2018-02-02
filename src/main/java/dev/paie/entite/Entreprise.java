@@ -18,6 +18,10 @@ public class Entreprise {
 	private String urssaf;
 	private String codeNaf;
 	
+	public Entreprise() {
+		super();
+	}
+	
 	public String getDenomination() {
 		return denomination;
 	}
@@ -54,9 +58,7 @@ public class Entreprise {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Entreprise() {
-		super();
-	}
+	
 	
 	
 }

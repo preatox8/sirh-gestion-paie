@@ -26,6 +26,10 @@ public class BulletinSalaire {
 	
 	private BigDecimal primeExceptionnelle;
 	
+	public BulletinSalaire() {
+		super();
+	}
+	
 	
 	public RemunerationEmploye getRemunerationEmploye() {
 		return remunerationEmploye;
@@ -50,9 +54,6 @@ public class BulletinSalaire {
 	}
 	public void setId(Integer id) {
 		this.id = id;
-	}
-	public BulletinSalaire() {
-		super();
 	}
 	
 	

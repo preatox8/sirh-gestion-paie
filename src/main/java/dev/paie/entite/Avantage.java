@@ -16,6 +16,17 @@ public class Avantage {
 	private String code;
 	private String nom;
 	private BigDecimal montant;
+	
+	public Avantage() {
+		super();
+	}
+	
+	public Avantage(String code, String nom, BigDecimal montant) {
+		super();
+		this.code = code;
+		this.nom = nom;
+		this.montant = montant;
+	}
 
 	public String getCode() {
 		return code;
@@ -49,16 +60,8 @@ public class Avantage {
 		this.id = id;
 	}
 
-	public Avantage(String code, String nom, BigDecimal montant) {
-		super();
-		this.code = code;
-		this.nom = nom;
-		this.montant = montant;
-	}
 
-	public Avantage() {
-		super();
-	}
+	
 	
 	
 }

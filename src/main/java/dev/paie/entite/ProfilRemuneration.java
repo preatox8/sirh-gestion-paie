@@ -38,6 +38,10 @@ public class ProfilRemuneration {
 		inverseJoinColumns = @JoinColumn(name = "ID_AV", referencedColumnName = "id")
 	)
 	private List<Avantage> avantages;
+	
+	public ProfilRemuneration() {
+		super();
+	}
 
 	public Integer getId() {
 		return id;
@@ -79,8 +83,6 @@ public class ProfilRemuneration {
 		this.avantages = avantages;
 	}
 
-	public ProfilRemuneration() {
-		super();
-	}
+	
 
 }
