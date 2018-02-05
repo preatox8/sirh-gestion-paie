@@ -33,30 +33,29 @@
 			</div>
 		</div>
 		<br />
+		<div class="row">
+			<div class="col">
+				<button href="#" class="btn btn-secondary btn-sm float-right">Ajouter
+					un employé</button>
+			</div>
+		</div>
+		<br />
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th>Firstname</th>
-					<th>Lastname</th>
-					<th>Email</th>
+					<th>Date/heure création</th>
+					<th>Matricule</th>
+					<th>Grade</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>John</td>
-					<td>Doe</td>
-					<td>john@example.com</td>
-				</tr>
-				<tr>
-					<td>Mary</td>
-					<td>Moe</td>
-					<td>mary@example.com</td>
-				</tr>
-				<tr>
-					<td>July</td>
-					<td>Dooley</td>
-					<td>july@example.com</td>
-				</tr>
+				<c:forEach items="${listemploye}" var="emp">
+					<tr>
+						<td>${emp.dateheurecreation}</td>
+						<td>${emp.matricule}</td>
+						<td>${emp.grade.code}</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>

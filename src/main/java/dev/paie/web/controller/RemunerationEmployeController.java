@@ -1,7 +1,10 @@
 package dev.paie.web.controller;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import org.hibernate.type.ZonedDateTimeType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,11 +59,16 @@ public class RemunerationEmployeController {
 		Grade grade1 = new Grade();
 		grade1.setId(grade);
 		
+		ZonedDateTime dateheurecrea = null;
+		dateheurecrea = ZonedDateTime.now();
+		
+		
 		RemunerationEmploye employe = new RemunerationEmploye();
 		employe.setMatricule(matricule);
 		employe.setEntreprise(entreprise1);
 		employe.setProfilRemuneration(profil1);
 		employe.setGrade(grade1);
+		employe.setDateheurecreation(dateheurecrea);
 		
 		remunerationEmployeRepository.save(employe);
 		
@@ -70,16 +78,9 @@ public class RemunerationEmployeController {
 	@RequestMapping(method = RequestMethod.GET,path = "/lister")
 	public ModelAndView listerEmploye() {
 		ModelAndView mv = new ModelAndView();
-		
-		List<Entreprise> listEntreprise = entrepriseRepository.findAll();
-		List<ProfilRemuneration> listProfilRemuneartion = profilRemunerationRepository.findAll();
-		List<Grade> listGrade = gradeRepository.findAll();
-
+		List<RemunerationEmploye> listEmploye = remunerationEmployeRepository.findAll();
 		mv.setViewName("employes/listerEmploye");
-		
-		mv.addObject("entreprise", listEntreprise);
-		mv.addObject("profil", listProfilRemuneartion);
-		mv.addObject("grade", listGrade);
+		mv.addObject("listemploye", listEmploye);
 
 		return mv;
 	}
