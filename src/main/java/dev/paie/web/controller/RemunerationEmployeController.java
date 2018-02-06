@@ -4,7 +4,6 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import org.hibernate.type.ZonedDateTimeType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,16 +58,15 @@ public class RemunerationEmployeController {
 		Grade grade1 = new Grade();
 		grade1.setId(grade);
 		
-		ZonedDateTime dateheurecrea = null;
-		dateheurecrea = ZonedDateTime.now();
-		
+		ZonedDateTime dateheurecrea = ZonedDateTime.now();
+		String dateformat = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss").format(dateheurecrea);
 		
 		RemunerationEmploye employe = new RemunerationEmploye();
 		employe.setMatricule(matricule);
 		employe.setEntreprise(entreprise1);
 		employe.setProfilRemuneration(profil1);
 		employe.setGrade(grade1);
-		employe.setDateheurecreation(dateheurecrea);
+		employe.setDateHeureCreation(dateformat);
 		
 		remunerationEmployeRepository.save(employe);
 		
@@ -81,7 +79,6 @@ public class RemunerationEmployeController {
 		List<RemunerationEmploye> listEmploye = remunerationEmployeRepository.findAll();
 		mv.setViewName("employes/listerEmploye");
 		mv.addObject("listemploye", listEmploye);
-
 		return mv;
 	}
 	

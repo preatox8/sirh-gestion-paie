@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ajouter un employé</title>
+<title>Créer bulletin</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap-4.0.0-dist/css/bootstrap.css">
 </head>
@@ -17,98 +17,85 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="<c:url value='lister'/>">Employés</a></li>
-				<li class="nav-item"><a class="nav-link" href="<c:url value='/mvc/bulletins/lister'/>">Bulletins</a>
-				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="<c:url value='/mvc/employes/lister'/>">Employés</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="<c:url value='lister'/>">Bulletins</a></li>
 			</ul>
 		</div>
 	</nav>
 
 	<div class="container">
-		<br />
+		<br>
+		<div class="alert alert-info alert-dismissible fade show" role="alert">
+			Veuillez créer un employé avant de créer un bulletin de salaire
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
 		<div class="row">
 			<div class="col">
-				<h1>Ajouter un employé</h1>
+				<h1>Créer un bulletin de salaire</h1>
 			</div>
 		</div>
 		<br />
-		<form method="POST" name="nvcollab" id="formcreaemploye"
-			action="<%=request.getContextPath()%>/mvc/employes/creer">
+		<form method="POST" name="nvcollab" id="formcreabulletin"
+			action="<%=request.getContextPath()%>/mvc/bulletins/creer">
+			<div class="card-body">
+				<div class="row">
+					<div class="input-group mb-3">
+						<div class="col-12 col-md-4 col-xl-3">
+							<label for="validationDefault05"
+								class="texte-justify float-right"> <strong>Période</strong>
+							</label>
+						</div>
+						<div class="col-12 col-md-6 col-xl-6">
+							<select class="custom-select" name="periode" id="periode">
+								<c:forEach items="${periode}" var="p">
+									<option value="${p.id}">${p.dateDebut}-${p.dateFin}</option>
+								</c:forEach>
+							</select>
+							<div class="invalid-feedback">La période est obligatoire</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="input-group mb-3">
+						<div class="col-12 col-md-4 col-xl-3">
+							<label for="validationDefault05"
+								class="texte-justify float-right"> <strong>Matricule</strong>
+							</label>
+						</div>
+						<div class="col-12 col-md-6 col-xl-6">
+							<select class="custom-select" name="matricule" id="matricule">
+								<c:forEach items="${employe}" var="emp">
+									<option value="${emp.id}">${emp.matricule}</option>
+								</c:forEach>
+							</select>
+							<div class="invalid-feedback">Le matricule est obligatoire</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-12 col-md-4 col-xl-3">
 					<label for="validationDefault05" class="texte-justify float-right">
-						<strong>Matricule</strong>
+						<strong>Prime exceptionnelle</strong>
 					</label>
-
 				</div>
 				<div class="col-12 col-md-6">
-					<input required type="text" class="form-control" name="matricule"
-						id="matricule">
-					<div class="invalid-feedback">Le matricule est obligatoire</div>
+					<input required type="text" class="form-control" name="prime"
+						id="prime">
+					<div class="invalid-feedback">La prime est obligatoire</div>
 				</div>
 			</div>
 			<br />
-			<div class="card-body">
-				<div class="row">
-					<div class="input-group mb-3">
-						<div class="col-12 col-md-4 col-xl-3">
-							<label for="validationDefault05"
-								class="texte-justify float-right"> <strong>Entreprise</strong>
-							</label>
-						</div>
-						<div class="col-12 col-md-6 col-xl-6">
-							<select class="custom-select" name="entreprise" id="entreprise">
-								<c:forEach items="${entreprise}" var="e">
-									<option value="${e.id}">${e.denomination}</option>
-								</c:forEach>
-							</select>
-							<div class="invalid-feedback">L'entreprise est obligatoire</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="card-body">
-				<div class="row">
-					<div class="input-group mb-3">
-						<div class="col-12 col-md-4 col-xl-3">
-							<label for="validationDefault05"
-								class="texte-justify float-right"> <strong>Profil</strong>
-							</label>
-						</div>
-						<div class="col-12 col-md-6 col-xl-6">
-							<select class="custom-select" name="profil" id="profil">
-								<c:forEach items="${profil}" var="p">
-									<option value="${p.id}">${p.code}</option>
-								</c:forEach>
-							</select>
-							<div class="invalid-feedback">Le profil est obligatoire</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="card-body">
-				<div class="row">
-					<div class="input-group mb-3">
-						<div class="col-12 col-md-4 col-xl-3">
-							<label for="validationDefault05"
-								class="texte-justify float-right"> <strong>Grade</strong>
-							</label>
-						</div>
-						<div class="col-12 col-md-6 col-xl-6">
-							<select class="custom-select" name="grade" id="grade">
-								<c:forEach items="${grade}" var="g">
-									<option value="${g.id}">${g.code}- ${g.nbHeuresBase * g.tauxBase * 12}
-										€ / an</option>
-								</c:forEach>
-							</select>
-							<div class="invalid-feedback">Le grade est obligatoire</div>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="row ">
 				<div class="col-12 col-md-9 col-xl-9 ">
-					<button type="submit" class="btn btn-secondary btn-sm float-right">Ajouter</button>
+					<button type="submit" class="btn btn-secondary btn-sm float-right">Créer</button>
 				</div>
 			</div>
 		</form>

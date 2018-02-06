@@ -1,7 +1,5 @@
 package dev.paie.entite;
 
-import java.time.ZonedDateTime;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +27,7 @@ public class RemunerationEmploye {
 	@JoinColumn(name = "IDREMUNERATIONEMPLOYEGRADE")
 	private Grade grade;
 	
-	private ZonedDateTime dateheurecreation;
+	private String dateHeureCreation;
 	
 	public RemunerationEmploye() {
 		super();
@@ -68,18 +66,20 @@ public class RemunerationEmploye {
 	}
 
 	/**
-	 * @return the dateheurecreation
+	 * @return the dateHeureCreation
 	 */
-	public ZonedDateTime getDateheurecreation() {
-		return dateheurecreation;
+	public String getDateHeureCreation() {
+		return dateHeureCreation;
 	}
 
 	/**
-	 * @param dateheurecreation the dateheurecreation to set
+	 * @param dateHeureCreation the dateHeureCreation to set
 	 */
-	public void setDateheurecreation(ZonedDateTime dateheurecreation) {
-		this.dateheurecreation = dateheurecreation;
+	public void setDateHeureCreation(String dateHeureCreation) {
+		this.dateHeureCreation = dateHeureCreation;
 	}
+
+
 	
 	
 	

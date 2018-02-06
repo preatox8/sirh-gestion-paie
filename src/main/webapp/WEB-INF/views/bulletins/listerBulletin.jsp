@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Lister les employés</title>
+<title>Lister les bulletins</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap-4.0.0-dist/css/bootstrap.css">
 </head>
@@ -17,10 +17,10 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="<c:url value='lister'/>">Employés</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="<c:url value='/mvc/bulletins/lister'/>">Bulletins</a>
-				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="<c:url value='/mvc/employes/lister'/>">Employés</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="<c:url value='lister'/>">Bulletins</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -29,13 +29,14 @@
 		<br />
 		<div class="row">
 			<div class="col">
-				<h1>Liste de employés</h1>
+				<h1>Liste des bulletins</h1>
 			</div>
 		</div>
 		<br />
 		<div class="row">
 			<div class="col">
-				<a class="btn btn-secondary btn-sm float-right" role="button" href="<c:url value='creer'/>"> Ajouter un employé</a>
+				<a class="btn btn-secondary btn-sm float-right" role="button"
+					href="<c:url value='creer'/>"> Créer un nouveau bulletin</a>
 			</div>
 		</div>
 		<br />
@@ -43,16 +44,24 @@
 			<thead>
 				<tr>
 					<th>Date/heure création</th>
+					<th>Période</th>
 					<th>Matricule</th>
-					<th>Grade</th>
+					<th>Salaire Brut</th>
+					<th>Net Imposable</th>
+					<th>Net A Payer</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${listemploye}" var="emp">
+				<c:forEach items="${listcalcul}" var="b">
 					<tr>
-						<td>${emp.dateHeureCreation}</td>
-						<td>${emp.matricule}</td>
-						<td>${emp.grade.code}</td>
+						<td>${b.key.remunerationEmploye.dateHeureCreation}</td>
+						<td>${b.key.periode.dateDebut}- ${b.key.periode.dateFin}</td>
+						<td>${b.key.remunerationEmploye.matricule}</td>
+						<td>${b.value.salaireBrut}</td>
+						<td>${b.value.netImposable}</td>
+						<td>${b.value.netAPayer}</td>
+						<td><a class="nav-link" href="<c:url value='visualiser'/>">Visualiser</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

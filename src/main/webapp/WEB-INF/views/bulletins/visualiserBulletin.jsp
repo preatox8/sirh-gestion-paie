@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Lister les employés</title>
+<title>Visualiser Bulletin</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/bootstrap-4.0.0-dist/css/bootstrap.css">
 </head>
@@ -17,47 +17,19 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="<c:url value='lister'/>">Employés</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="<c:url value='/mvc/bulletins/lister'/>">Bulletins</a>
-				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="<c:url value='/mvc/employes/lister'/>">Employés</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="<c:url value='lister'/>">Bulletins</a></li>
 			</ul>
 		</div>
 	</nav>
 
 	<div class="container">
-		<br />
-		<div class="row">
-			<div class="col">
-				<h1>Liste de employés</h1>
-			</div>
-		</div>
-		<br />
-		<div class="row">
-			<div class="col">
-				<a class="btn btn-secondary btn-sm float-right" role="button" href="<c:url value='creer'/>"> Ajouter un employé</a>
-			</div>
-		</div>
-		<br />
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>Date/heure création</th>
-					<th>Matricule</th>
-					<th>Grade</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${listemploye}" var="emp">
-					<tr>
-						<td>${emp.dateHeureCreation}</td>
-						<td>${emp.matricule}</td>
-						<td>${emp.grade.code}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+	
+		
 	</div>
+	
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js "
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN "
 		crossorigin="anonymous "></script>
