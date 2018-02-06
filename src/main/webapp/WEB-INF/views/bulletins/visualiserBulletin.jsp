@@ -25,11 +25,209 @@
 		</div>
 	</nav>
 
-	<div class="container">
-	
-		
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<h1>Bulletin de salaire</h1>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col">
+				<div class="float-right">
+					<strong>Période</strong>
+				</div>
+				<br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="float-right">
+					Du
+					<c:out value="${bull.periode.dateDebut}"></c:out>
+					Au
+					<c:out value="${bull.periode.dateFin}"></c:out>
+				</div>
+				<br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<strong>Entreprise</strong>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-4">
+				<c:out value="${bull.remunerationEmploye.entreprise.denomination}"></c:out>
+			</div>
+			<div class="col-8">
+				<div class="float-right">
+					<strong>Matricule : </strong>${bull.remunerationEmploye.matricule}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<strong>SIRET : </strong>${bull.remunerationEmploye.entreprise.siret}
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col">
+				<strong>Salaire </strong>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Rubrique</th>
+					<th>Base</th>
+					<th>Taux Salarial</th>
+					<th>Montant Salarial</th>
+					<th>Taux Patronal</th>
+					<th>Cot. Patronales</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Salaire de base</td>
+					<td>${bull.remunerationEmploye.grade.nbHeuresBase}</td>
+					<td>${bull.remunerationEmploye.grade.tauxBase}</td>
+					<td>${calcul.salaireDeBase}</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Prime Except.</td>
+					<td></td>
+					<td></td>
+					<td>${bull.primeExceptionnelle}</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Salaire Brut</td>
+					<td></td>
+					<td></td>
+					<td>${calcul.salaireBrut}</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<div class="row">
+			<div class="col">
+				<strong>Cotisations </strong>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Rubrique</th>
+					<th>Base(brut)</th>
+					<th>Taux Salarial</th>
+					<th>Montant Salarial</th>
+					<th>Taux Patronal</th>
+					<th>Cot. Patronales</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>EP01 URSSAF Maladie ...</td>
+					<td>xx</td>
+					<td>xx</td>
+					<td>xx</td>
+					<td>xx</td>
+					<td>xx</td>
+				</tr>
+				<tr>
+					<td>EP01 URSSAF Solidarité.</td>
+					<td>xx</td>
+					<td>xx</td>
+					<td>xx</td>
+					<td>xx</td>
+					<td>xx</td>
+				</tr>
+				<tr>
+					<td>...</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>...</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Total Retenue</td>
+					<td></td>
+					<td></td>
+					<td>xx</td>
+					<td></td>
+					<td>xx</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col">
+				<strong>NET Imposable :  </strong>XXX
+			</div>
+		</div>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Rubrique</th>
+					<th>Base(brut)</th>
+					<th>Taux Salarial</th>
+					<th>Montant Salarial</th>
+					<th>Taux Patronal</th>
+					<th>Cot. Patronales</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>SP01 URSSAF CSG NON DEDUCTIB</td>
+					<td>xx</td>
+					<td>xx</td>
+					<td>xx</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>SXX XXXXX</td>
+					<td>xx</td>
+					<td>xx</td>
+					<td>xx</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<div class="row">
+			<div class="col">
+				<div class="float-right">
+					<strong>NET A PAYER : </strong>XXXXX
+				</div>
+			</div>
+		</div>
 	</div>
-	
+
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js "
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN "
 		crossorigin="anonymous "></script>

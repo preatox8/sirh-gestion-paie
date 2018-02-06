@@ -61,7 +61,7 @@
 						<td>${b.value.salaireBrut}</td>
 						<td>${b.value.netImposable}</td>
 						<td>${b.value.netAPayer}</td>
-						<td><a class="nav-link" href="<c:url value='visualiser'/>">Visualiser</a></td>
+						<td><a class="nav-link" href="<c:url value='visualiser/?id=${b.key.id}'/>">Visualiser</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
