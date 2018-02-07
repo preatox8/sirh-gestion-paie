@@ -37,9 +37,7 @@ public class GradeServiceJdbcTemplate implements GradeService {
 
 	public List<Grade> lister() {
 		String vSQL = "SELECT * FROM grade";
-		List<Grade> listeGrade = jdbcTemplate.query(vSQL, new GradeMapper());
-		return listeGrade;
-
+		return jdbcTemplate.query(vSQL, new GradeMapper());
 	}
 
 	public class GradeMapper implements RowMapper<Grade> {
