@@ -83,7 +83,7 @@ public class CalculerRemunerationServiceSimple implements CalculerRemunerationSe
 	@Transactional
 	public Map<BulletinSalaire, ResultatCalculRemuneration> calculerTousLesBulletins() {
 		
-		Map<BulletinSalaire, ResultatCalculRemuneration> listcalcul = new HashMap<BulletinSalaire, ResultatCalculRemuneration>();
+		Map<BulletinSalaire, ResultatCalculRemuneration> listcalcul = new HashMap<>();
 		
 		List<BulletinSalaire> listbulletin = bulletinSalaireRepository.findAll();
 		

@@ -27,7 +27,7 @@ import dev.paie.repository.UtilisateurRepository;
 public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 
 	@PersistenceContext
-	private EntityManager em, em1;
+	private EntityManager em;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -61,21 +61,21 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService {
 				em.persist(p);
 			});
 
-			cotisation.forEach((k, v) -> {
-				em.persist(v);
-			});
+			cotisation.forEach((k, v) -> 
+				em.persist(v)
+			);
 
-			grade.forEach((k, v) -> {
-				em.persist(v);
-			});
+			grade.forEach((k, v) -> 
+				em.persist(v)
+			);
 
-			entreprise.forEach((k, v) -> {
-				em.persist(v);
-			});
+			entreprise.forEach((k, v) -> 
+				em.persist(v)
+			);
 
-			profilRemuneration.forEach((k, v) -> {
-				em.persist(v);
-			});
+			profilRemuneration.forEach((k, v) -> 
+				em.persist(v)
+			);
 
 		} catch (Exception e) {
 			System.out.println("erreur : " + e);

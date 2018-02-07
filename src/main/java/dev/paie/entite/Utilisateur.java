@@ -25,6 +25,18 @@ public class Utilisateur {
 	
 	@Enumerated(EnumType.STRING)
 	private ROLES role;
+	
+	public Utilisateur() {
+		super();
+	}
+	public Utilisateur(String nomUtilisateur, String motDePasse, Boolean estActif, ROLES role) {
+		super();
+		this.nomUtilisateur = nomUtilisateur;
+		this.motDePasse = motDePasse;
+		this.estActif = estActif;
+		this.role = role;
+	}
+	
 	/**
 	 * @return the nomUtilisateur
 	 */
@@ -73,17 +85,4 @@ public class Utilisateur {
 	public void setRole(ROLES role) {
 		this.role = role;
 	}
-	public Utilisateur() {
-		super();
-	}
-	public Utilisateur(String nomUtilisateur, String motDePasse, Boolean estActif, ROLES role) {
-		super();
-		this.nomUtilisateur = nomUtilisateur;
-		this.motDePasse = motDePasse;
-		this.estActif = estActif;
-		this.role = role;
-	}
-	
-	
-
 }
