@@ -1,6 +1,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,9 +18,10 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="<c:url value='lister'/>">Employés</a></li>
-				<li class="nav-item"><a class="nav-link" href="<c:url value='/mvc/bulletins/lister'/>">Bulletins</a>
-				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="<c:url value='lister'/>">Employés</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="<c:url value='/mvc/bulletins/lister'/>">Bulletins</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -97,7 +99,7 @@
 						<div class="col-12 col-md-6 col-xl-6">
 							<select class="custom-select" name="grade" id="grade">
 								<c:forEach items="${grade}" var="g">
-									<option value="${g.id}">${g.code}- ${g.nbHeuresBase * g.tauxBase * 12}
+									<option value="${g.id}">${g.code}-${g.nbHeuresBase * g.tauxBase * 12}
 										€ / an</option>
 								</c:forEach>
 							</select>
@@ -111,6 +113,7 @@
 					<button type="submit" class="btn btn-secondary btn-sm float-right">Ajouter</button>
 				</div>
 			</div>
+			<sec:csrfInput />
 		</form>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js "

@@ -1,6 +1,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,6 +99,7 @@
 					<button type="submit" class="btn btn-secondary btn-sm float-right">Créer</button>
 				</div>
 			</div>
+			<sec:csrfInput />
 		</form>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js "

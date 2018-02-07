@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,7 @@ public class BulletinSalaireController {
 
 	
 	@RequestMapping(method = RequestMethod.GET,path = "/creer")
+	@Secured({"ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR"})
 	public ModelAndView creerBulletin() {
 		ModelAndView mv = new ModelAndView();
 		
@@ -46,6 +48,7 @@ public class BulletinSalaireController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path="/creer")
+	@Secured({"ROLE_ADMINISTRATEUR"})
 	public String submit(@RequestParam(value="periode") Integer periode, @RequestParam(value="matricule") Integer employe, @RequestParam(value="prime") String prime) {
 		
 		Periode periode1 = new Periode();
@@ -67,6 +70,7 @@ public class BulletinSalaireController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,path = "/lister")
+	@Secured({"ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR"})
 	public ModelAndView listerBulletin() {
 		ModelAndView mv = new ModelAndView();
 		
@@ -76,7 +80,8 @@ public class BulletinSalaireController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,path = "/visualiser")
-	 @Transactional
+	@Secured({"ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR"})
+	@Transactional
 	public ModelAndView visualiserBulletin(@RequestParam Integer id) {
 		ModelAndView mv = new ModelAndView();
 		

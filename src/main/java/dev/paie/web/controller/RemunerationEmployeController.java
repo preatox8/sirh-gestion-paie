@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +30,9 @@ public class RemunerationEmployeController {
 	@Autowired GradeRepository gradeRepository;
 	@Autowired RemunerationEmployeRepository remunerationEmployeRepository;
 
+		
 	@RequestMapping(method = RequestMethod.GET,path = "/creer")
+	@Secured({"ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR"})
 	public ModelAndView creerEmploye() {
 		ModelAndView mv = new ModelAndView();
 		
@@ -47,6 +50,7 @@ public class RemunerationEmployeController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path="/creer")
+	@Secured("ROLE_ADMINISTRATEUR")
 	public String submit(@RequestParam(value="matricule") String matricule, @RequestParam(value="entreprise") Integer entreprise, @RequestParam(value="profil") Integer profil, @RequestParam(value="grade") Integer grade) {
 		
 		Entreprise entreprise1 = new Entreprise();
@@ -74,6 +78,7 @@ public class RemunerationEmployeController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,path = "/lister")
+	@Secured({"ROLE_UTILISATEUR", "ROLE_ADMINISTRATEUR"})
 	public ModelAndView listerEmploye() {
 		ModelAndView mv = new ModelAndView();
 		List<RemunerationEmploye> listEmploye = remunerationEmployeRepository.findAll();
